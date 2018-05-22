@@ -47,11 +47,14 @@ class tasksController extends Controller
     {
         
                 $this->validate($request, [
+            'status' => 'required|max:10', 
             'content' => 'required|max:191',
+            
         ]);
         
         
         $task = new task;
+        $task->status = $request->status; 
         $task->content = $request->content;
         $task->save();
 
@@ -99,10 +102,12 @@ class tasksController extends Controller
     {
         
                 $this->validate($request, [
+            'status' => 'required|max:10', 
             'content' => 'required|max:191',
         ]);
         
         $task = task::find($id);
+        $task->status = $request->status; 
         $task->content = $request->content;
         $task->save();
 
@@ -117,6 +122,9 @@ class tasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = task::find($id);
+        $task->delete();
+
+        return redirect('/');
     }
 }
