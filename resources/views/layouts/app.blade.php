@@ -14,12 +14,15 @@
     </head>
 
     <body>
-    　  @include('commons.navbar')
 
+    　  @include('commons.navbar')
+   
         <div class="container">
+         <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
         @include('commons.error_tasks')
         
         @yield('content')
+        </div>
         </div>
     </body>
 </html>
